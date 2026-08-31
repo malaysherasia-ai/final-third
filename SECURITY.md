@@ -12,6 +12,22 @@ What the skill contains is instructions that a model reads. Every piece of data 
 
 That is the whole trust argument, and it is worth stating plainly to a reviewer before anything else. The question is not whether this repository is safe. It is whether your organisation's existing AI and Jira controls are configured the way you think they are.
 
+## Read only, and how to enforce it
+
+The skill only reads. Every Jira operation it performs is a search or a get. It never creates, updates, transitions, assigns, comments on, links or deletes anything, and it never modifies a board, sprint, filter or version.
+
+That instruction is a design commitment rather than a security control, and the difference matters. An instruction tells a model what to do. It is not the same as making a write impossible, and any claim that a prompt guarantees read only behaviour should be treated with suspicion.
+
+The enforcement sits with your administrators, in two places.
+
+In ChatGPT, an admin can set action control on the Atlassian app to allow read actions only. This is the control that matters, and asking for it costs nothing, because the report needs no write access to function.
+
+In Atlassian, access runs under your own Jira permissions through OAuth 2.1, so the connector can never do anything you could not do yourself. If your account holds edit rights across projects, the connector inherits them, which is exactly why the restriction on the ChatGPT side is worth having.
+
+The CSV export lane removes the question entirely. A saved filter exported to a file cannot write anything back under any circumstances.
+
+If you are preparing for a security review, ask for read actions only before the first run rather than after. It is a simpler conversation when nothing has happened yet.
+
 ## What Atlassian controls on their side
 
 Facts from Atlassian's own documentation, worth knowing because a reviewer will ask.
@@ -73,4 +89,4 @@ Six things to confirm, in order.
 
 ## A paragraph to send your security team
 
-> I want to run a delivery reporting workflow in our approved ChatGPT workspace against Jira, using the Atlassian connector we already have enabled. The workflow is a Markdown instruction file with no code, no dependencies and no network access of its own, so it introduces no new vendor or supply chain relationship. All data access happens through the existing Atlassian Rovo MCP connector under OAuth 2.1, which is scoped to my own Jira permissions and subject to our domain settings and IP allowlist. It reads issue metadata only, meaning dates, statuses, issue types, priorities, story points and links, and never requests descriptions, comments or attachments. I would like the Atlassian app restricted to read actions. Happy to run the first pull with you watching, since the workflow lists its queries for approval before it retrieves anything.
+> I want to run a delivery reporting workflow in our approved ChatGPT workspace against Jira, using the Atlassian connector we already have enabled. The workflow is a Markdown instruction file with no code, no dependencies and no network access of its own, so it introduces no new vendor or supply chain relationship. All data access happens through the existing Atlassian Rovo MCP connector under OAuth 2.1, which is scoped to my own Jira permissions and subject to our domain settings and IP allowlist. It reads issue metadata only, meaning dates, statuses, issue types, priorities, story points and links, and never requests descriptions, comments or attachments. The workflow issues read operations only, never writes, and I would like the Atlassian app set to read actions only so that is enforced rather than assumed. Happy to run the first pull with you watching, since the workflow lists its queries for approval before it retrieves anything.

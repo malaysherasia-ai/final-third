@@ -14,6 +14,14 @@ It reports against the freeze. Reading Jira through an Atlassian connector or a 
 
 Every figure names the Jira field it came from. Where a field is not populated the skill says so and returns nothing, rather than substituting a typical value.
 
+Every query it runs is a read. It retrieves issues and fields and computes from them. It never creates, updates, transitions or deletes anything in Jira, and it never modifies a board, sprint or version. [SECURITY.md](SECURITY.md) covers how to have that enforced by your administrators rather than trusted.
+
+## Work without a fixed date
+
+Two kinds of work turn up. Where there is a launch, a go live or a regulatory deadline, the freeze applies and the framework runs as written. Where a team runs sprint after sprint with nothing to launch, there is nothing to freeze, and the skill says so instead of inventing a date. It looks for the nearest real commitment boundary, usually a quarterly goal, a PI boundary or a customer commitment, and applies the framework to that increment. If there is no boundary at all, it reports flow health and no freeze.
+
+Long programmes get the same treatment. Anything past about sixteen weeks is split into delivery increments with a freeze on each, because four months of closing on a twelve month programme is not a rule anyone will follow.
+
 ## Install
 
 **Claude:**
@@ -74,6 +82,18 @@ Use the connector for working sessions and a CSV export from a saved filter for 
 The artefact is prose. An npm package implies executable code, install scripts and a dependency tree, which is exactly the surface enterprise security teams are trained to scrutinise, and publishing a Markdown file there would invite a review it does not need. Claude plugin marketplaces install from a Git repository, so this is already the native path, and anyone who needs an internal copy can fork it.
 
 ## Version history
+
+### 1.1.0
+
+Added an explicit read only rule to the skill, and a section in `SECURITY.md` covering how administrators enforce it rather than trusting a prompt.
+
+Added mode handling. Work with a fixed date runs the freeze as before. Continuous work with no launch date now looks for the nearest real commitment boundary, and reports flow health with no freeze where none exists.
+
+Added a date resolution ladder, so the freeze is calculated from a fix version, an epic or a sprint range, and the skill asks the user when Jira holds no dates rather than inferring them.
+
+Added guidance for programmes beyond about sixteen weeks, which get a freeze per delivery increment rather than one freeze across the whole thing.
+
+Replaced the fixed capacity reserve figure with a method for deriving it from a team's own release history.
 
 ### 1.0.1
 
