@@ -12,6 +12,7 @@ REQUIRED = [
     "README.md",
     "LICENSE",
     "SECURITY.md",
+    "CONTRIBUTING.md",
     ".claude-plugin/plugin.json",
     ".claude-plugin/marketplace.json",
     "agents/openai.yaml",

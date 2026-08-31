@@ -81,7 +81,15 @@ Use the connector for working sessions and a CSV export from a saved filter for 
 
 The artefact is prose. An npm package implies executable code, install scripts and a dependency tree, which is exactly the surface enterprise security teams are trained to scrutinise, and publishing a Markdown file there would invite a review it does not need. Claude plugin marketplaces install from a Git repository, so this is already the native path, and anyone who needs an internal copy can fork it.
 
+## Contributing
+
+Issues are welcome, particularly reports that the skill did not resolve fields on your Jira, or that a metric produced a figure you know is wrong. Bug fixes and documentation corrections are welcome as pull requests. For changes to the methodology itself, open an issue first so the discussion happens before the work. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Version history
+
+### 1.1.1
+
+Added `CONTRIBUTING.md` covering what is useful to report, how methodology changes are handled, and what will not be merged.
 
 ### 1.1.0
 

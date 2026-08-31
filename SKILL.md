@@ -9,7 +9,7 @@ description: |
   agile SDLC metrics against the freeze date.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # The Final Third
