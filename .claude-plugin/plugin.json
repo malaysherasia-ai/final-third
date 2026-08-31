@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "final-third",
+  "description": "Plan and control delivery against a fixed date by freezing scope at the two thirds mark, and report Jira metrics against that freeze.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Malay Sherasia",
+    "url": "https://github.com/malaysherasia-ai"
+  },
+  "homepage": "https://github.com/malaysherasia-ai/final-third",
+  "repository": "https://github.com/malaysherasia-ai/final-third",
+  "license": "MIT",
+  "keywords": ["product-management", "delivery", "agile", "jira", "scope-freeze", "release-management"],
+  "skills": ["./"]
+}

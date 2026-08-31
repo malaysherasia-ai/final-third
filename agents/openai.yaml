@@ -1,0 +1,4 @@
+interface:
+  display_name: "The Final Third"
+  short_description: "Freeze scope at two thirds and report delivery against it"
+  default_prompt: "Use $final-third to set the scope freeze date for our release and report where we stand against it."

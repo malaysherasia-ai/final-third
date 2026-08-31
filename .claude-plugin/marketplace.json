@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "final-third",
+  "owner": {
+    "name": "Malay Sherasia",
+    "url": "https://github.com/malaysherasia-ai"
+  },
+  "description": "Install The Final Third as a Claude plugin.",
+  "plugins": [
+    {
+      "name": "final-third",
+      "source": "./",
+      "description": "Plan and control delivery against a fixed date by freezing scope at the two thirds mark.",
+      "license": "MIT",
+      "keywords": ["product-management", "delivery", "agile", "jira", "scope-freeze", "release-management"]
+    }
+  ]
+}

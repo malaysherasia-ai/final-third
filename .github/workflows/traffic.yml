@@ -1,0 +1,48 @@
+name: traffic
+
+# GitHub keeps only 14 days of traffic data. This snapshots it daily
+# into metrics/ so the history survives.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull traffic and stars
+        env:
+          # The default GITHUB_TOKEN is often refused on the traffic endpoints.
+          # If this job 403s, create a fine grained PAT with read access to
+          # repository administration and metadata, save it as TRAFFIC_TOKEN.
+          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN || secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          mkdir -p metrics
+          for ep in views clones; do
+            gh api "repos/$REPO/traffic/$ep" > "/tmp/$ep.json"
+          done
+          gh api "repos/$REPO/traffic/popular/referrers" > /tmp/referrers.json
+          gh api "repos/$REPO/traffic/popular/paths" > /tmp/paths.json
+          gh api -H "Accept: application/vnd.github.star+json" \
+            --paginate "repos/$REPO/stargazers" > /tmp/stars.json
+          gh api "repos/$REPO" > /tmp/repo.json
+
+      - name: Merge into history
+        run: python3 scripts/merge-traffic.py
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metrics
+          git diff --staged --quiet || git commit -m "metrics: daily snapshot"
+          git push
