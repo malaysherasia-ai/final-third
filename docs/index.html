@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Final Third · prompts</title>
+<meta name="description" content="Copy-paste prompts for running The Final Third, a delivery framework for work with a fixed date. Freeze scope at the two thirds mark.">
+<meta property="og:title" content="The Final Third">
+<meta property="og:description" content="Freeze scope at two thirds. Copy the prompts and run it against your Jira.">
+<meta property="og:type" content="article">
+<style>
+  :root{
+    --navy:#1F3864; --navy-deep:#16294a; --paper:#FAF9F6; --rule:#DCD7CC;
+    --ink:#22262b; --quiet:#6E6A61; --red:#C0392B; --pale:#E8EDF5; --mid:#CFD9EA;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.65; letter-spacing:-0.005em;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:0 24px}
+
+  /* hero */
+  header{background:var(--navy); color:#fff; padding:64px 0 52px}
+  header h1{
+    margin:0 0 10px; font-size:clamp(34px,7vw,52px); line-height:1.05;
+    font-weight:700; letter-spacing:-0.03em;
+  }
+  header p{margin:0; color:var(--mid); font-size:clamp(17px,2.4vw,20px); max-width:34em}
+
+  /* the signature element: the timeline itself */
+  .rail{margin:38px 0 4px}
+  .bar{display:flex; height:52px; border-radius:3px; overflow:hidden}
+  .bar span{
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700; letter-spacing:0.01em; flex:1;
+  }
+  .bar .s1{background:var(--pale); color:var(--navy)}
+  .bar .s2{background:var(--mid); color:var(--navy)}
+  .bar .s3{background:var(--navy-deep); color:#fff; box-shadow:inset 3px 0 0 var(--red)}
+  .rail .marks{display:flex; margin-top:9px; font-size:13px; color:var(--mid)}
+  .rail .marks b{flex:2; font-weight:400}
+  .rail .marks i{flex:1; font-style:normal; color:#e79a92; text-align:left}
+
+  main{padding:52px 0 0}
+  section{padding-bottom:44px}
+  h2{
+    font-size:26px; line-height:1.2; letter-spacing:-0.02em;
+    margin:0 0 14px; font-weight:700; color:var(--navy);
+  }
+  h3{font-size:19px; margin:30px 0 8px; font-weight:700}
+  p{margin:0 0 16px; max-width:38em}
+  .quiet{color:var(--quiet)}
+  hr{border:0; border-top:1px solid var(--rule); margin:0 0 44px}
+
+  /* three parts */
+  .parts{display:grid; gap:14px; margin:0 0 8px}
+  .part{border-left:4px solid var(--mid); padding:2px 0 2px 16px}
+  .part:last-child{border-left-color:var(--red)}
+  .part b{display:block; color:var(--navy); font-size:17px}
+  .part span{color:var(--quiet); font-size:16px}
+
+  /* steps */
+  .step{margin:0 0 34px}
+  .step-head{display:flex; align-items:baseline; gap:12px; margin:0 0 6px}
+  .step-head .n{
+    color:var(--red); font-weight:700; font-size:15px;
+    min-width:1.6em; font-variant-numeric:tabular-nums;
+  }
+  .step-head h3{margin:0}
+
+  /* copy block */
+  .block{border:1px solid var(--rule); border-radius:4px; background:#fff; margin:12px 0 0}
+  .block-body{padding:18px 20px; font-size:16px; line-height:1.6; color:#2c3138}
+  .block-body p{margin:0 0 12px}
+  .block-body p:last-child{margin:0}
+  .block-body code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:14px; background:var(--pale); padding:1px 5px; border-radius:3px;
+    word-break:break-all;
+  }
+  .block-foot{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    border-top:1px solid var(--rule); padding:9px 12px 9px 20px;
+  }
+  .block-foot small{color:var(--quiet); font-size:13px}
+  button.copy{
+    font:inherit; font-size:14px; font-weight:700; cursor:pointer;
+    background:var(--navy); color:#fff; border:1px solid var(--navy);
+    padding:7px 16px; border-radius:3px; min-width:104px;
+  }
+  button.copy:hover{background:var(--navy-deep)}
+  button.copy:focus-visible{outline:3px solid var(--red); outline-offset:2px}
+  button.copy[data-done="1"]{background:#2E7D4F; border-color:#2E7D4F}
+
+  details{border-top:1px solid var(--rule); padding-top:18px; margin-top:8px}
+  summary{cursor:pointer; font-weight:700; color:var(--navy)}
+  summary:focus-visible{outline:3px solid var(--red); outline-offset:3px}
+
+  .note{background:var(--pale); border-left:4px solid var(--red); padding:16px 20px; margin:0 0 16px}
+  .note p{margin:0}
+
+  footer{border-top:1px solid var(--rule); margin-top:20px; padding:30px 0 60px; color:var(--quiet); font-size:15px}
+  a{color:var(--navy)}
+  a:focus-visible{outline:3px solid var(--red); outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>The Final Third</h1>
+    <p>A rule for delivering when the date will not move. Split the timeline in three, freeze scope at the two thirds mark, and spend the last third closing.</p>
+    <div class="rail">
+      <div class="bar">
+        <span class="s1">Set up</span><span class="s2">Build</span><span class="s3">Close only</span>
+      </div>
+      <div class="marks"><b>Kickoff</b><i>Scope freeze &nbsp;&middot;&nbsp; Launch</i></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>The rule</h2>
+  <div class="parts">
+    <div class="part"><b>First third, set up.</b><span>Requirements, design and architecture decisions, dependency mapping, environments, test data, access. Reach a state where no later task is waiting on a decision nobody made.</span></div>
+    <div class="part"><b>Second third, build.</b><span>Scope can still move, but by trade. Something comes in, something else goes out, and the swap is recorded with a name against it.</span></div>
+    <div class="part"><b>Final third, close only.</b><span>Burn down open stories, run full regression, fix defects, complete sign off, rehearse cutover and rollback. Nothing new enters.</span></div>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <h2>Run it in ten minutes</h2>
+  <p>No install and no GitHub account. If you have ChatGPT or Claude at work with the Atlassian app switched on, this works today. If you do not, there is a spreadsheet route at the bottom.</p>
+
+  <div class="step">
+    <div class="step-head"><span class="n">1</span><h3>Load the rules</h3></div>
+    <p class="quiet">Open a new chat and paste this. It points the model at the public files.</p>
+    <div class="block">
+      <div class="block-body" id="p1">
+        <p>Fetch these three files and use them as your instructions for this conversation. They are public.</p>
+        <p><code>https://raw.githubusercontent.com/malaysherasia-ai/final-third/main/SKILL.md</code></p>
+        <p><code>https://raw.githubusercontent.com/malaysherasia-ai/final-third/main/reference/metrics.md</code></p>
+        <p><code>https://raw.githubusercontent.com/malaysherasia-ai/final-third/main/reference/prompts.md</code></p>
+        <p>Once you have them, confirm three things back to me: the name of the framework, where the scope freeze sits, and what you should do when a Jira field we need is not populated.</p>
+        <p>If you cannot reach those URLs, say so plainly and do not proceed. Do not reconstruct the framework from the file names or from what you already know about delivery.</p>
+      </div>
+      <div class="block-foot">
+        <small>Check the answer says the freeze sits at two thirds, and that a missing field is reported rather than estimated.</small>
+        <button class="copy" data-target="p1">Copy</button>
+      </div>
+    </div>
+
+    <details>
+      <summary>If it cannot reach those URLs</summary>
+      <p class="quiet">Browsing is switched off in your workspace. Paste the framework in directly instead.</p>
+      <div class="block">
+        <div class="block-body" id="p1b">
+          <p>You are helping me run a delivery framework called The Final Third. Here are the rules.</p>
+          <p>Split a project timeline into three equal parts. The first third is for setting up: requirements, design and architecture decisions, dependency mapping, environments, test data and access. The second third is for building, where scope can still move but only by trade, meaning something comes in and something else goes out. The last third is for closing only: burning down open stories, full regression, defect fixing, legal and accessibility sign off, and rehearsing cutover and rollback. Nothing new enters in the last third.</p>
+          <p>The line between the second and third part is a scope freeze.</p>
+          <p>When you report to me, only read from Jira. Never create, update, transition or delete anything. Every figure you give me must come from a named Jira field. If a field is not filled in on our project, tell me it is missing and give me nothing for that metric rather than estimating it.</p>
+          <p>Acknowledge and wait for my project details.</p>
+        </div>
+        <div class="block-foot">
+          <small>Works with no connection to anything.</small>
+          <button class="copy" data-target="p1b">Copy</button>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="n">2</span><h3>Set the freeze</h3></div>
+    <p class="quiet">Replace the bracketed parts with your own.</p>
+    <div class="block">
+      <div class="block-body" id="p2">
+        <p>Our release runs from [start date] to [launch date]. It is in Jira project [KEY], fix version [RELEASE].</p>
+        <p>Calculate the two thirds point of that timeline and tell me the exact freeze date. Then draft a short note I can send to stakeholders at kickoff explaining what the freeze means and what happens to requests that arrive after it. Write it as how the project runs rather than as a restriction on them. Under 150 words.</p>
+      </div>
+      <div class="block-foot">
+        <small>You get a date and a note you can send the same day.</small>
+        <button class="copy" data-target="p2">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="n">3</span><h3>Read the state</h3></div>
+    <p class="quiet">Once you are underway, ask where you stand against the freeze.</p>
+    <div class="block">
+      <div class="block-body" id="p3">
+        <p>Read our Jira for project [KEY], fix version [RELEASE]. Before pulling anything, list the queries and fields you plan to use and wait for me to approve them.</p>
+        <p>Then tell me four things. How many points are open against how much capacity we have before the freeze. What date the remaining work finishes at our recent velocity, and how far that is from the freeze. How much scope was added after we started. Whether defects are being raised faster than they are being closed.</p>
+        <p>Then give me the shortest list of items that would have to move to the next release for the freeze to hold.</p>
+      </div>
+      <div class="block-foot">
+        <small>Approving the query list first keeps the pull small and gives you an audit trail.</small>
+        <button class="copy" data-target="p3">Copy</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <h2>No Jira connection at work</h2>
+  <p>Everything above still works from a spreadsheet. Export your release from Jira as a CSV, keeping the issue key, summary, status, issue type, story points, sprint and created date columns. Attach the file to the chat and use the same prompts. Slower to set up, and more reliable, because nothing gets truncated.</p>
+  <div class="note">
+    <p>Ask whoever administers ChatGPT at your company to set the Atlassian app to read actions only. The reporting never needs to write to Jira, and it is an easier conversation before the first run than after.</p>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <h2>The rest of it</h2>
+  <p>The full framework, the metric definitions with the Jira field behind each one, and a security note covering what your organisation's admin controls actually do, are all in the repository. MIT licensed.</p>
+  <p><a href="https://github.com/malaysherasia-ai/final-third">github.com/malaysherasia-ai/final-third</a></p>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Written by Malay Sherasia. <a href="https://malay.sherasia.com">malay.sherasia.com</a></p>
+</footer>
+
+<script>
+document.querySelectorAll("button.copy").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var src = document.getElementById(btn.dataset.target);
+    var text = Array.from(src.querySelectorAll("p")).map(function(p){
+      return p.textContent.trim();
+    }).join("\n\n");
+    function done(){
+      btn.textContent = "Copied";
+      btn.dataset.done = "1";
+      setTimeout(function(){ btn.textContent = "Copy"; btn.removeAttribute("data-done"); }, 2000);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly","");
+      ta.style.position = "fixed"; ta.style.top = "-1000px";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); }
+      catch(e){ btn.textContent = "Select and copy"; }
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
+</body>
+</html>

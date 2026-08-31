@@ -24,6 +24,8 @@ Long programmes get the same treatment. Anything past about sixteen weeks is spl
 
 ## Install
 
+**Business users, no install:** a copy-and-paste page with the prompts is at https://malaysherasia-ai.github.io/final-third/
+
 **Claude:**
 
 ```
@@ -86,6 +88,10 @@ The artefact is prose. An npm package implies executable code, install scripts a
 Issues are welcome, particularly reports that the skill did not resolve fields on your Jira, or that a metric produced a figure you know is wrong. Bug fixes and documentation corrections are welcome as pull requests. For changes to the methodology itself, open an issue first so the discussion happens before the work. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Version history
+
+### 1.2.0
+
+Added a hosted prompts page at `docs/index.html`, served through GitHub Pages, for people who want to run the framework without installing anything. Single file, no dependencies, no analytics.
 
 ### 1.1.1
 
