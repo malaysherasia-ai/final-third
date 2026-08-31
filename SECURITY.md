@@ -4,9 +4,11 @@ Written for the person who wants to run this against their employer's Jira and n
 
 ## The skill itself is not a security surface
 
-This repository is Markdown. There is no code, no install script, no dependency tree, no network call, no telemetry, and no credential of any kind. Nothing in it phones home. The author never sees your data and has no way to.
+The delivery skill itself contains no executable code, no network calls, no telemetry and no credentials. It is Markdown that a model reads. Nothing in it phones home, and the author never sees your data and has no way to.
 
-What it contains is instructions that a model reads. Every piece of data access happens through a connector your organisation set up, approved, and can revoke, and none of it flows through anything published here.
+The repository does contain two Python scripts, and you should know what they are rather than find them mid review. `scripts/validate-package.py` checks that the package files exist and agree on a version number. `scripts/merge-traffic.py` runs only inside this repository's GitHub Actions and appends this repository's own visitor statistics to a CSV. Neither is loaded by the skill, neither runs on your machine, and neither has any access to Jira or to anything you do with the framework.
+
+What the skill contains is instructions that a model reads. Every piece of data access happens through a connector your organisation set up, approved, and can revoke, and none of it flows through anything published here.
 
 That is the whole trust argument, and it is worth stating plainly to a reviewer before anything else. The question is not whether this repository is safe. It is whether your organisation's existing AI and Jira controls are configured the way you think they are.
 

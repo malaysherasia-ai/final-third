@@ -27,7 +27,7 @@ Every figure names the Jira field it came from. Where a field is not populated t
 
 **Any other agent that reads skills:** copy `SKILL.md` and the `reference/` folder into your skills directory.
 
-**Inside a company that reviews external repositories:** fork it. The licence is MIT, the whole thing is Markdown, and vendoring a copy into your internal Git is a reasonable thing for a security team to ask for.
+**Inside a company that reviews external repositories:** fork it. The licence is MIT, the skill is Markdown with two small validation scripts alongside it, and vendoring a copy into your internal Git is a reasonable thing for a security team to ask for.
 
 Before running this against your employer's Jira, read [SECURITY.md](SECURITY.md). It covers what the Atlassian and OpenAI admin controls actually do, what this framework reads and does not read, the residual risks, and a paragraph you can send to your security team.
 
@@ -74,6 +74,10 @@ Use the connector for working sessions and a CSV export from a saved filter for 
 The artefact is prose. An npm package implies executable code, install scripts and a dependency tree, which is exactly the surface enterprise security teams are trained to scrutinise, and publishing a Markdown file there would invite a review it does not need. Claude plugin marketplaces install from a Git repository, so this is already the native path, and anyone who needs an internal copy can fork it.
 
 ## Version history
+
+### 1.0.1
+
+Corrected the opening of `SECURITY.md`. It described the repository as containing no code, which was wrong, since two Python scripts sit alongside the skill for package validation and repository traffic. The claim now applies to the skill itself and the scripts are described.
 
 ### 1.0.0
 
