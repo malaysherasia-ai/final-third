@@ -19,9 +19,9 @@ jobs:
 
       - name: Pull traffic and stars
         env:
-          # The default GITHUB_TOKEN is often refused on the traffic endpoints.
-          # If this job 403s, create a fine grained PAT with read access to
-          # repository administration and metadata, save it as TRAFFIC_TOKEN.
+          # The default GITHUB_TOKEN is refused on the traffic endpoints, and so
+          # is a fine grained PAT. Use a classic token with the public_repo
+          # scope and save it as the TRAFFIC_TOKEN secret. See metrics/README.md.
           GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN || secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |

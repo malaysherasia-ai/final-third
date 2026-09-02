@@ -45,17 +45,19 @@ clones = [
 ]
 merge_daily("clones.csv", clones, fields=["date", "clones", "unique_cloners"])
 
+# Stars are aggregated to a daily count. The API returns usernames, but a
+# count answers the same question without keeping a list of named people here.
 stars = load("stars")
-star_rows = [
-    {"date": s["starred_at"][:10], "user": s["user"]["login"]}
-    for s in stars
-    if "starred_at" in s
-]
+per_day = {}
+for s in stars:
+    if "starred_at" in s:
+        day = s["starred_at"][:10]
+        per_day[day] = per_day.get(day, 0) + 1
 with (METRICS / "stars.csv").open("w", newline="") as f:
-    w = csv.DictWriter(f, fieldnames=["date", "user"])
+    w = csv.DictWriter(f, fieldnames=["date", "stars"])
     w.writeheader()
-    for r in sorted(star_rows, key=lambda r: r["date"]):
-        w.writerow(r)
+    for day in sorted(per_day):
+        w.writerow({"date": day, "stars": per_day[day]})
 
 repo = load("repo")
 snapshot = {

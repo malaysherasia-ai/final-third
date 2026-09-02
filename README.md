@@ -89,6 +89,12 @@ Issues are welcome, particularly reports that the skill did not resolve fields o
 
 ## Version history
 
+### 1.2.1
+
+Corrected the token guidance for the traffic workflow. A fine grained token is refused on GitHub's traffic endpoints, so a classic token with the `public_repo` scope is the working answer.
+
+Stars are now recorded as a daily count rather than a list of usernames.
+
 ### 1.2.0
 
 Added a hosted prompts page at `docs/index.html`, served through GitHub Pages, for people who want to run the framework without installing anything. Single file, no dependencies, no analytics.

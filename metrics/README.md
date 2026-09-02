@@ -36,14 +36,24 @@ GitHub keeps traffic data for fourteen days and then drops it. Miss two weeks an
 
 `.github/workflows/traffic.yml` runs daily, pulls the current window, and merges it into dated CSVs in this folder, keyed on date so re-running is safe. The history becomes permanent and lives in the repository.
 
-Traffic endpoints need push access. The default `GITHUB_TOKEN` is often refused, so if the job returns 403, create a fine grained personal access token with read access to repository administration and metadata, and save it as a repository secret named `TRAFFIC_TOKEN`.
+Traffic endpoints need push access, and the default `GITHUB_TOKEN` is refused on them. Create a personal access token and save it as a repository secret named `TRAFFIC_TOKEN`.
+
+Use a classic token with the `public_repo` scope. A fine grained token with read access to repository administration and metadata looks like the right answer and is what GitHub steers you toward, but it is also refused on the traffic endpoints. That is worth knowing before you spend an afternoon on it.
+
+Set an expiry you will remember. When the token lapses the job fails quietly, and any days that pass before you notice are gone, because GitHub only keeps a fourteen day window.
 
 ## Files here
 
 - `views.csv` daily views and unique visitors
 - `clones.csv` daily clones and unique cloners
-- `stars.csv` one row per star with the date it was given
+- `stars.csv` one row per day with the number of stars given that day
 - `SNAPSHOT.md` current totals plus referrers and popular paths for the last fourteen days
+
+## What is not recorded
+
+`stars.csv` holds dates and counts, not usernames. The stargazers endpoint returns who starred and when, and GitHub shows that publicly anyway, but there is no reason to keep a list of named people in this repository when a daily count answers the same question.
+
+Nothing in this folder identifies a visitor. GitHub's traffic API does not expose individuals, and nothing here goes looking for them.
 
 ## Reading the numbers
 
