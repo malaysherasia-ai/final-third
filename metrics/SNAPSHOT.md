@@ -12,13 +12,12 @@ Stars 0  ·  Forks 0  ·  Watchers 0
 
 | Path | Views | Unique |
 |---|---|---|
-| /malaysherasia-ai/final-third | 5 | 4 |
+| /malaysherasia-ai/final-third | 4 | 4 |
 | /malaysherasia-ai/final-third/tree/main/metrics | 3 | 2 |
 | /malaysherasia-ai/final-third/blob/main/metrics/clones.csv | 2 | 2 |
 | /malaysherasia-ai/final-third/blob/main/metrics/views.csv | 2 | 2 |
-| /malaysherasia-ai/final-third/pulse | 2 | 1 |
 | /malaysherasia-ai/final-third/blob/main/CONTRIBUTING.md | 1 | 1 |
 | /malaysherasia-ai/final-third/blob/main/metrics/stars.csv | 1 | 1 |
-| /malaysherasia-ai/final-third/graphs/traffic | 1 | 1 |
 | /malaysherasia-ai/final-third/pulls | 1 | 1 |
+| /malaysherasia-ai/final-third/pulse | 1 | 1 |
 | /malaysherasia-ai/final-third/tree/main | 1 | 1 |
